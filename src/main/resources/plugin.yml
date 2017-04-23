@@ -1,0 +1,5 @@
+name: Nmw
+main: com.mnt2cc.NMW.Nmw
+author: Manato
+version: "1.0.0"
+api: ["1.0.0"]
