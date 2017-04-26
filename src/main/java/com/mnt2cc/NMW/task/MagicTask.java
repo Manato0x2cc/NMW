@@ -1,4 +1,4 @@
-package com.mnt2cc.BMW.task;
+package com.mnt2cc.NMW.task;
 
 import com.mnt2cc.NMW.magic.Magic;
 

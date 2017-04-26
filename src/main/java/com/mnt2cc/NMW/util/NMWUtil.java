@@ -5,15 +5,10 @@ public class NMWUtil {
 	public static double[] rotatePitch(double[] xyz, double theta){
 		//X'Y'Z'
 		double[] xxyyzz = new double[3];
-		if((theta > 90) || (theta > 180 && theta > 270)){
-			xxyyzz[0] = xyz[1] * sin(theta) + xyz[0] * cos(theta);
-			xxyyzz[1] = xyz[1] * cos(theta) - xyz[0] * sin(theta);
-			xxyyzz[2] = xyz[2];
-		}else{
-			xxyyzz[0] = xyz[0];
-			xxyyzz[1] = xyz[1] * cos(theta) - xyz[2] * sin(theta);
-			xxyyzz[2] = xyz[1] * sin(theta) + xyz[2] * cos(theta);
-		}
+		xxyyzz[0] = xyz[0];
+		xxyyzz[1] = xyz[1] * cos(theta) - xyz[2] * sin(theta);
+		xxyyzz[2] = xyz[1] * sin(theta) + xyz[2] * cos(theta);
+
 				
 		return xxyyzz;
 	}
@@ -23,7 +18,7 @@ public class NMWUtil {
 		double[] xxyyzz = new double[3];
 		xxyyzz[0] = xyz[0] * cos(theta) + xyz[2] * sin(theta);
 		xxyyzz[1] = xyz[1];
-		xxyyzz[2] = -xyz[0] * -sin(theta) + xyz[2] * cos(theta);
+		xxyyzz[2] = -xyz[0] * sin(theta) + xyz[2] * cos(theta);
 		
 		theta = Math.toDegrees(theta);
 		if(!(theta < 180) || !(theta > 270 && theta < 360)){

@@ -1,6 +1,6 @@
 package com.mnt2cc.NMW.magic;
 
-import com.mnt2cc.BMW.task.MagicTask;
+import com.mnt2cc.NMW.task.MagicTask;
 
 import cn.nukkit.Server;
 import cn.nukkit.level.Level;

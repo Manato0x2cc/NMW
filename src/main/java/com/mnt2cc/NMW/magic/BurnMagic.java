@@ -23,7 +23,7 @@ public class BurnMagic extends Magic {
 			z*=7;
 			
 			v = new Vector3(this.startPoint.x+x+0.5, this.startPoint.y+1, this.startPoint.z+z+0.5);
-			this.draw(new RedstoneParticle(v,3));
+			this.draw(new RedstoneParticle(v,1));
 		}
 	}
 }
