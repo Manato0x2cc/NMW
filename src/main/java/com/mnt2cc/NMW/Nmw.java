@@ -4,6 +4,10 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerInteractEvent;
 
 import com.mnt2cc.NMW.magic.*;
+import com.mnt2cc.NMW.task.FireworkTask;
+import com.mnt2cc.NMW.task.ShieldTask;
+import com.mnt2cc.NMW.tool.Firework;
+import com.mnt2cc.NMW.tool.ManeverGear3D;
 
 import cn.nukkit.Player;
 import cn.nukkit.Server;
@@ -19,7 +23,8 @@ public class Nmw extends PluginBase implements Listener {
 	
 	public void onEnable(){
 		this.getServer().getPluginManager().registerEvents(this, this);
-		Server.getInstance().getScheduler().scheduleRepeatingTask(new ShieldTask(this), 10);
+		Server.getInstance().getScheduler().scheduleRepeatingTask(new ShieldTask(), 20);
+		Server.getInstance().getScheduler().scheduleRepeatingTask(new FireworkTask(), FireworkTask.TICK);
 	}
 	
 	@EventHandler
@@ -40,6 +45,7 @@ public class Nmw extends PluginBase implements Listener {
 		}
 	}
 
+
 	private void magic(Player player) {
 		MagicFactory mf = MagicFactory.getInstance();
 		switch(player.getInventory().getItemInHand().getId()){
@@ -48,6 +54,17 @@ public class Nmw extends PluginBase implements Listener {
 			beam.setYaw(player.getYaw());
 			beam.setPitch(player.getPitch());
 			Magic.run(beam);
+			break;
+		case Item.IRON_SWORD:
+			ManeverGear3D.getInstance().run(player);
+			break;
+		case Item.TORCH:
+			if(player.getInventory().getChestplate().getId() != Item.ELYTRA) break;
+			player.setGliding(true);
+			Firework.run(player);
+			break;
+		default:
+			return;
 		}
 	}
 }
